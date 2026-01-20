@@ -231,9 +231,9 @@ const Navbar: React.FC<{ onOpenModal: (url: string, title: string) => void }> = 
 
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-[#0B0E14]/95 backdrop-blur-md border-b border-white/10 py-3' : 'bg-transparent py-6'}`}>
-      <div className="container mx-auto px-6 flex items-center justify-between">
+      <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <button onClick={() => scrollToSection('hero')} className="text-2xl font-black tracking-tighter text-white hover:opacity-80 transition-opacity">
+          <button onClick={() => scrollToSection('hero')} className="text-xl md:text-2xl font-black tracking-tighter text-white hover:opacity-80 transition-opacity whitespace-nowrap">
             <span className="text-[#00F0FF]">智赢</span> · SmartWin
           </button>
         </div>
@@ -256,7 +256,25 @@ const Navbar: React.FC<{ onOpenModal: (url: string, title: string) => void }> = 
             <LayoutDashboard size={14} /> 会员中心
           </a>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
+          
+          {/* MOBILE ONLY BUTTONS */}
+          <div className="flex md:hidden items-center gap-2">
+            <button 
+              onClick={() => onOpenModal(JD_LINKS.GET_KEY, "提取 EA 激活码")}
+              className="bg-[#FFD700] text-[#0B0E14] px-3 py-1.5 rounded-lg text-xs font-black shadow-[0_0_10px_rgba(255,215,0,0.2)] whitespace-nowrap"
+            >
+              激活码
+            </button>
+            <button 
+               onClick={() => onOpenModal(JD_LINKS.UPGRADE, "会员订阅 / 升级")}
+               className="bg-[#00F0FF] text-[#0B0E14] px-3 py-1.5 rounded-lg text-xs font-black shadow-[0_0_10px_rgba(0,240,255,0.2)] whitespace-nowrap"
+            >
+              订阅
+            </button>
+          </div>
+
+          {/* DESKTOP ONLY BUTTONS */}
           <button 
             onClick={() => onOpenModal(JD_LINKS.GET_KEY, "提取 EA 激活码")}
             className="hidden md:flex items-center gap-2 px-6 py-2.5 rounded-lg bg-gradient-to-r from-[#FFD700] to-[#FFA500] text-[#0B0E14] hover:brightness-110 transition-all text-sm font-black shadow-[0_0_20px_rgba(255,215,0,0.3)] hover:scale-105"
@@ -264,10 +282,10 @@ const Navbar: React.FC<{ onOpenModal: (url: string, title: string) => void }> = 
             <Key size={16} /> 提取EA激活码
           </button>
           <button 
-            onClick={() => onOpenModal(JD_LINKS.REGISTER, "L1 免费会员注册")}
-            className="bg-[#00F0FF] text-[#0B0E14] px-8 py-2.5 rounded-full text-xs font-black hover:scale-105 transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)]"
+            onClick={() => onOpenModal(JD_LINKS.UPGRADE, "会员订阅 / 升级")}
+            className="hidden md:block bg-[#00F0FF] text-[#0B0E14] px-8 py-2.5 rounded-full text-xs font-black hover:scale-105 transition-all shadow-[0_0_20px_rgba(0,240,255,0.4)]"
           >
-            L1 免费训练
+            会员订阅
           </button>
         </div>
       </div>
@@ -1145,8 +1163,10 @@ const ChallengeRewardsSection: React.FC<{ onOpenModal: (url: string, title: stri
                    <h4 className="text-xl font-bold text-white mb-2">伯乐计划 · 推荐有奖</h4>
                    <div className="text-sm text-slate-400 space-y-1">
                       <p>推荐高手参加并通关，获得丰厚回报：</p>
-                      <div className="font-mono text-[#FFD700] font-bold pt-2">
-                         L3 推荐: ¥ 15,000 | L2 推荐: ¥ 10,000 | L1 推荐: ¥ 5,000
+                      <div className="font-mono text-[#FFD700] font-bold pt-2 flex flex-col gap-1">
+                         <span>L3 推荐: ¥ 15,000</span>
+                         <span>L2 推荐: ¥ 10,000</span>
+                         <span>L1 推荐: ¥ 5,000</span>
                       </div>
                    </div>
                 </div>
